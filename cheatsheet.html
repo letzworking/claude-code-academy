@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>치트시트 · Claude Code 첫걸음</title>
+  <meta name="description" content="Claude Code 명령, 단축키, 프롬프트 템플릿을 한 장에 정리한 치트시트.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html"><span class="brand-mark">&gt;_</span>Claude Code 첫걸음</a>
+      <nav class="site-nav" id="site-nav" aria-label="주요 메뉴">
+        <ul>
+          <li><a href="lessons/01-why-ai.html">01 왜 AI?</a></li>
+          <li><a href="lessons/02-setup.html">02 설치</a></li>
+          <li><a href="lessons/03-first-10min.html">03 첫 10분</a></li>
+          <li><a href="lessons/04-recipes.html">04 실무 레시피</a></li>
+          <li><a href="lessons/05-habits.html">05 좋은 습관</a></li>
+          <li><a href="cheatsheet.html" aria-current="page">치트시트</a></li>
+        </ul>
+      </nav>
+      <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="메뉴 열기">☰</button>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="테마 전환">☾</button>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <div class="lesson-head">
+      <h1>Claude Code 치트시트</h1>
+      <p class="muted">모니터 옆에 붙여 두고 쓰세요. <button class="link-btn no-print" type="button" data-print>인쇄하기</button></p>
+    </div>
+
+    <div class="cheat-grid">
+      <section class="card">
+        <h2>🚀 시작하기</h2>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><td><code>claude</code></td><td>현재 폴더에서 대화 시작</td></tr>
+              <tr><td><code>claude "질문"</code></td><td>질문과 함께 바로 시작</td></tr>
+              <tr><td><code>claude -c</code></td><td>가장 최근 대화 이어하기</td></tr>
+              <tr><td><code>claude -r</code></td><td>지난 대화 골라서 이어하기</td></tr>
+              <tr><td><code>claude -p "질문"</code></td><td>한 번 답하고 종료 (스크립트용)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>⌨️ 꼭 알아야 할 키</h2>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><td><kbd>Esc</kbd></td><td>하던 일 멈추기</td></tr>
+              <tr><td><kbd>Esc</kbd> <kbd>Esc</kbd></td><td>이전 시점으로 되감기</td></tr>
+              <tr><td><kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>권한 모드 전환 (Plan 모드 포함)</td></tr>
+              <tr><td><kbd>Shift</kbd>+<kbd>Enter</kbd></td><td>줄바꿈 (여러 줄 입력)</td></tr>
+              <tr><td><kbd>↑</kbd></td><td>이전 입력 불러오기</td></tr>
+              <tr><td><code>@파일명</code></td><td>특정 파일을 지목해서 질문</td></tr>
+              <tr><td><code>!명령</code></td><td>셸 명령 바로 실행 (예: <code>!git status</code>)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>/ 자주 쓰는 명령</h2>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><td><code>/help</code></td><td>사용 가능한 명령 보기</td></tr>
+              <tr><td><code>/init</code></td><td>CLAUDE.md 초안 만들기</td></tr>
+              <tr><td><code>/clear</code></td><td>새 대화로 시작</td></tr>
+              <tr><td><code>/compact</code></td><td>긴 대화를 요약해 정리</td></tr>
+              <tr><td><code>/rewind</code></td><td>이전 시점으로 되돌리기</td></tr>
+              <tr><td><code>/review</code></td><td>변경 내용 리뷰받기</td></tr>
+              <tr><td><code>/model</code></td><td>사용할 모델 바꾸기</td></tr>
+              <tr><td><code>/doctor</code></td><td>설치 상태 점검</td></tr>
+              <tr><td><code>/exit</code></td><td>종료</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>🧩 좋은 요청의 4요소</h2>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><td><strong>대상</strong></td><td>"OrderService의 cancel()"</td></tr>
+              <tr><td><strong>목표</strong></td><td>"재고 복구가 안 되는 원인 찾기"</td></tr>
+              <tr><td><strong>제약</strong></td><td>"다른 클래스는 건드리지 마"</td></tr>
+              <tr><td><strong>검증</strong></td><td>"테스트 만들고 통과시켜줘"</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card" style="grid-column:1/-1">
+        <h2>📋 바로 쓰는 프롬프트</h2>
+        <div class="grid grid-2">
+          <div class="code prompt"><span class="code-label">코드 이해</span><pre>{클래스}가 하는 일을 요약하고, 수정할 때 조심할 점을 알려줘.</pre></div>
+          <div class="code prompt"><span class="code-label">버그 찾기</span><pre>{클래스}에서 잠재적 버그를 심각도 순으로 찾아줘. 아직 수정하지 마.</pre></div>
+          <div class="code prompt"><span class="code-label">테스트</span><pre>{클래스} 단위 테스트를 JUnit 5 + Mockito로 만들고 실행해서 통과시켜줘.</pre></div>
+          <div class="code prompt"><span class="code-label">쿼리</span><pre>{Mapper.xml}의 {쿼리ID}가 조건별로 어떤 SQL이 되는지 보여주고 성능 위험을 짚어줘.</pre></div>
+          <div class="code prompt"><span class="code-label">버그 수정</span><pre>이 에러의 원인을 찾고, 재현 테스트를 먼저 만든 뒤 최소한으로 고쳐줘.
+(스택트레이스)</pre></div>
+          <div class="code prompt"><span class="code-label">PR 설명</span><pre>main 대비 변경 내용으로 PR 설명을 써줘. 배경/변경/테스트/리뷰 포인트 형식으로.</pre></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="callout warn" style="margin-bottom:48px">
+      <span class="callout-icon" aria-hidden="true">🔒</span>
+      <div class="callout-body"><p><strong>절대 붙여넣지 말 것</strong> — 비밀번호 · API 키 · 운영 DB 접속 정보 · 고객 개인정보</p></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>Claude Code 첫걸음 — 사내 개발자 교육 자료 (Anthropic 공식 사이트가 아닙니다)</span>
+      <span>최신 정보는 <a href="https://code.claude.com/docs" target="_blank" rel="noopener">공식 문서</a>를 확인하세요</span>
+    </div>
+  </footer>
+
+  <script src="assets/js/progress.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>03 첫 10분 체험 · Claude Code 첫걸음</title>
+  <meta name="description" content="내 프로젝트 코드로 해보는 미션 3개: 코드 설명받기, 버그 찾기, 주석 달기.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="../index.html"><span class="brand-mark">&gt;_</span>Claude Code 첫걸음</a>
+      <nav class="site-nav" id="site-nav" aria-label="주요 메뉴">
+        <ul>
+          <li><a href="01-why-ai.html">01 왜 AI?</a></li>
+          <li><a href="02-setup.html">02 설치</a></li>
+          <li><a href="03-first-10min.html" aria-current="page">03 첫 10분</a></li>
+          <li><a href="04-recipes.html">04 실무 레시피</a></li>
+          <li><a href="05-habits.html">05 좋은 습관</a></li>
+          <li><a href="../cheatsheet.html">치트시트</a></li>
+        </ul>
+      </nav>
+      <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="메뉴 열기">☰</button>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="테마 전환">☾</button>
+    </div>
+  </header>
+
+  <main id="main" class="prose">
+    <div class="lesson-head">
+      <div class="breadcrumb"><a href="../index.html#roadmap">로드맵</a> / 레슨 03</div>
+      <h1>첫 10분 체험</h1>
+      <ul class="lesson-meta"><li>⏱ 10분</li><li>🛠 실습</li><li>🎯 미션 3개</li></ul>
+      <div class="goal-box">
+        <strong>이 레슨을 마치면</strong>
+        <ul>
+          <li>내 코드에 대해 AI에게 질문하고 쓸모 있는 답을 받아 본 경험이 생깁니다.</li>
+          <li>"이거 생각보다 쓸 만한데?"라는 감각을 얻습니다.</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>
+      준비는 하나입니다. <strong>평소 작업하는 프로젝트 폴더에서 <code>claude</code>를 실행</strong>하세요.
+      아래 프롬프트의 <code>{ }</code> 부분만 내 프로젝트에 맞게 바꾸면 됩니다.
+    </p>
+    <div class="callout tip">
+      <span class="callout-icon" aria-hidden="true">💡</span>
+      <div class="callout-body"><p>미션 1·2는 코드를 <strong>읽기만</strong> 합니다. 아무것도 바뀌지 않으니 마음 편히 시도하세요. 미션 3은 별도 브랜치에서 하는 걸 권합니다.</p></div>
+    </div>
+
+    <h2>미션 1 · 오래된 코드 설명받기</h2>
+    <p>아무도 설명해 주지 않던 클래스 하나를 골라 보세요. 길고 복잡할수록 효과가 큽니다.</p>
+    <div class="code prompt"><span class="code-label">프롬프트</span><pre>{OrderService.java}가 하는 일을 설명해줘.
+1) 한 문단 요약
+2) 주요 메서드별 역할
+3) 이 클래스를 수정할 때 조심해야 할 부분</pre></div>
+    <p><strong>확인할 것</strong> — 설명이 내가 알던 내용과 맞나요? 혹시 몰랐던 의존 관계가 보이나요?</p>
+    <p class="muted">더 해보기: "이 메서드를 호출하는 곳을 모두 찾아줘", "이 흐름을 순서도처럼 단계별로 그려줘"</p>
+
+    <h2>미션 2 · 숨은 문제 찾기</h2>
+    <p>최근에 문제가 있었거나, 왠지 불안했던 코드를 골라 보세요.</p>
+    <div class="code prompt"><span class="code-label">프롬프트</span><pre>{PaymentService.java}에서 잠재적인 버그나 위험한 부분을 찾아줘.
+예: null 처리 누락, 예외 삼킴, 트랜잭션 범위, 동시성 문제.
+심각한 순서로 정렬하고, 각 항목에 해당 줄 번호와 이유를 적어줘.
+아직 코드는 수정하지 마.</pre></div>
+    <p><strong>확인할 것</strong> — 지적이 모두 맞지는 않을 수 있습니다. 여러분의 판단으로 "맞다 / 아니다"를 가려 보세요. 그 과정 자체가 AI와 일하는 핵심입니다.</p>
+    <div class="callout">
+      <span class="callout-icon" aria-hidden="true">🗣</span>
+      <div class="callout-body"><p>틀린 지적이 있으면 바로 말해 주세요. "3번은 상위에서 이미 검증하니까 문제없어"라고 하면 Claude가 맥락을 반영해 다시 판단합니다.</p></div>
+    </div>
+
+    <h2>미션 3 · 작은 변경 맡겨보기</h2>
+    <p>이제 처음으로 코드를 바꿔 봅니다. 위험이 낮은 "주석 달기"부터 시작합니다.</p>
+    <div class="code"><span class="code-label">먼저 작업용 브랜치를 만드세요</span><pre><code>git checkout -b try/claude-first</code></pre></div>
+    <div class="code prompt"><span class="code-label">프롬프트</span><pre>{OrderService.java}의 public 메서드에 Javadoc을 추가해줘.
+- 메서드가 "왜" 존재하는지 위주로, 한국어로
+- 코드 로직은 절대 바꾸지 마
+- 끝나면 변경한 내용을 요약해줘</pre></div>
+    <p>Claude가 수정 전에 확인을 요청하면 변경 내용을 읽어보고 승인하세요. 끝나면 직접 diff를 확인합니다.</p>
+    <div class="code"><span class="code-label">변경 확인</span><pre><code>git diff</code></pre></div>
+    <p class="muted">마음에 들지 않으면 <kbd>Esc</kbd> 두 번(또는 <code>/rewind</code>)으로 되돌리거나, <code>git checkout .</code>으로 깨끗하게 원복하면 됩니다.</p>
+
+    <h2>어떠셨나요?</h2>
+    <p>세 미션을 하면서 아래 중 하나라도 느꼈다면 첫 단계는 성공입니다.</p>
+    <ul class="checklist">
+      <li><label><input type="checkbox"> 혼자 했으면 한참 걸렸을 파악을 금방 끝냈다</label></li>
+      <li><label><input type="checkbox"> 내가 놓쳤던 문제를 하나 이상 발견했다</label></li>
+      <li><label><input type="checkbox"> AI의 틀린 답을 내가 바로잡았다 — 내 경험이 쓸모 있었다</label></li>
+      <li><label><input type="checkbox"> 다른 코드에도 써보고 싶어졌다</label></li>
+    </ul>
+
+    <div class="complete-box">
+      <p>미션 3개를 해보셨다면 체크하세요. 다음은 실무에서 바로 쓰는 레시피입니다.</p>
+      <button class="btn btn-primary complete-btn" type="button" data-complete="03" aria-pressed="false">이 레슨을 완료했어요</button>
+    </div>
+    <nav class="pager" aria-label="레슨 이동">
+      <a class="prev" href="02-setup.html"><small>← 이전 레슨</small>02 설치와 첫 실행</a>
+      <a class="next" href="04-recipes.html"><small>다음 레슨 →</small>04 Java/Spring 실무 레시피</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>Claude Code 첫걸음 — 사내 개발자 교육 자료 (Anthropic 공식 사이트가 아닙니다)</span>
+      <span>최신 정보는 <a href="https://code.claude.com/docs" target="_blank" rel="noopener">공식 문서</a>를 확인하세요</span>
+    </div>
+  </footer>
+
+  <script src="../assets/js/progress.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

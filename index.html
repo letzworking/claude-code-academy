@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Claude Code 첫걸음</title>
+  <meta name="description" content="AI가 처음인 시니어 개발자를 위한 Claude Code 입문 가이드. 5개의 짧은 레슨으로 첫 성공 경험까지.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html"><span class="brand-mark">&gt;_</span>Claude Code 첫걸음</a>
+      <nav class="site-nav" id="site-nav" aria-label="주요 메뉴">
+        <ul>
+          <li><a href="lessons/01-why-ai.html">01 왜 AI?</a></li>
+          <li><a href="lessons/02-setup.html">02 설치</a></li>
+          <li><a href="lessons/03-first-10min.html">03 첫 10분</a></li>
+          <li><a href="lessons/04-recipes.html">04 실무 레시피</a></li>
+          <li><a href="lessons/05-habits.html">05 좋은 습관</a></li>
+          <li><a href="cheatsheet.html">치트시트</a></li>
+        </ul>
+      </nav>
+      <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="메뉴 열기">☰</button>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="테마 전환">☾</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- 히어로 -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">AI가 처음인 시니어 개발자를 위한 입문 과정</span>
+          <h1>쌓아온 경력에<br><em>AI 동료</em> 한 명을 더하세요</h1>
+          <p class="lead">
+            프롬프트 엔지니어링도, 머신러닝 지식도 필요 없습니다.
+            터미널에서 한국어로 "이 코드 뭐 하는 거야?"라고 묻는 것부터 시작합니다.
+            레슨 5개, 하나에 10분 남짓이면 충분합니다.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="lessons/01-why-ai.html">첫 레슨 시작하기 →</a>
+            <a class="btn btn-ghost" href="lessons/03-first-10min.html">바로 체험해보기</a>
+          </div>
+        </div>
+
+        <figure class="term" data-animate aria-label="Claude Code 사용 예시 화면">
+          <div class="term-bar">
+            <span></span><span></span><span></span>
+            <span class="term-title">order-service — claude</span>
+            <button class="term-replay" type="button" data-term-replay>↻ 다시 보기</button>
+          </div>
+          <div class="term-body">
+            <p class="term-line"><span class="term-prompt">$</span> cd order-service &amp;&amp; claude</p>
+            <p class="term-line term-user">&gt; 쿠폰이 두 번 적용된다는 제보가 있어. OrderService 할인 로직 좀 봐줘.</p>
+            <p class="term-line term-dim">● OrderService.java 읽는 중…</p>
+            <p class="term-line term-dim">● CouponPolicy.java, OrderMapper.xml 확인 중…</p>
+            <p class="term-line">할인 계산은 ① 회원등급 ② 쿠폰 ③ 프로모션 순으로 적용됩니다.</p>
+            <p class="term-line"><span class="term-prompt">원인 후보:</span> applyCoupon()이 쿠폰 사용 여부를 확인하기 <b>전에</b> 할인을 더합니다.</p>
+            <p class="term-line term-user">&gt; 고쳐줘. 재현 테스트부터 만들고.</p>
+            <p class="term-line term-dim">● OrderServiceTest.java 에 실패 테스트 추가 → 수정 → 실행</p>
+            <p class="term-line term-ok">✓ ./gradlew test — 모든 테스트 통과. 변경 내용을 확인해 주세요.</p>
+          </div>
+          <figcaption class="muted" style="padding:0 16px 12px;font-size:.8rem">※ 이해를 돕기 위한 예시 화면입니다.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Before / After -->
+    <section class="section section-soft">
+      <div class="container">
+        <div class="section-head">
+          <h2>무엇이 달라지나요?</h2>
+          <p class="muted">누구나 겪어본 장면 하나로 비교해 봅니다. "인수인계 문서 없는 레거시 모듈을 고쳐야 한다."</p>
+        </div>
+        <div class="compare">
+          <div class="card before">
+            <span class="tag">지금까지</span>
+            <h3>혼자 파고들기</h3>
+            <ul>
+              <li>호출 관계를 따라 파일 수십 개를 열어본다</li>
+              <li>MyBatis XML과 Java를 번갈아 보며 쿼리를 머릿속으로 조립한다</li>
+              <li>고친 뒤 테스트는 "시간 나면" 작성한다</li>
+              <li>PR 설명은 퇴근 직전에 대충 쓴다</li>
+            </ul>
+          </div>
+          <div class="compare-arrow" aria-hidden="true">→</div>
+          <div class="card after">
+            <span class="tag tag-accent">Claude Code와 함께</span>
+            <h3>물어보고, 검토하고, 결정하기</h3>
+            <ul>
+              <li>"이 모듈의 주문 처리 흐름을 설명해줘" — 구조부터 파악</li>
+              <li>"이 쿼리가 실제로 어떤 SQL이 되는지 보여줘"</li>
+              <li>"재현 테스트부터 만들어줘" — 테스트가 기본이 된다</li>
+              <li>"변경 내용으로 PR 설명 써줘"</li>
+            </ul>
+          </div>
+        </div>
+        <p class="muted" style="margin-top:20px">
+          핵심은 <strong>AI가 대신 일한다</strong>가 아니라, <strong>여러분이 판단에 집중할 수 있게 된다</strong>는 것입니다.
+          무엇이 맞고 틀린지 아는 경험이야말로 AI를 잘 쓰는 데 가장 중요한 능력입니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- 세 가지 약속 -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>걱정은 내려놓으셔도 됩니다</h2>
+          <p class="muted">처음 시작할 때 가장 많이 듣는 걱정 세 가지입니다.</p>
+        </div>
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="card-icon" aria-hidden="true">💬</div>
+            <h3>새 언어를 배울 필요 없음</h3>
+            <p>특별한 명령어 문법이 아니라 평소 동료에게 말하듯 한국어로 요청합니다.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon" aria-hidden="true">✋</div>
+            <h3>내가 승인해야 바뀜</h3>
+            <p>파일 수정이나 명령 실행 전에 무엇을 할지 보여주고 확인을 받도록 설정할 수 있습니다.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon" aria-hidden="true">↩️</div>
+            <h3>되돌리기 쉬움</h3>
+            <p><kbd>Esc</kbd>로 언제든 멈추고, <kbd>Esc</kbd> 두 번이면 이전 상태로 되감을 수 있습니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 로드맵 -->
+    <section class="section section-soft" id="roadmap">
+      <div class="container">
+        <div class="section-head">
+          <h2>5단계 로드맵</h2>
+          <p class="muted">순서대로 보시는 걸 권하지만, 급하면 03부터 시작해도 괜찮습니다.</p>
+        </div>
+        <div class="progress">
+          <div class="progress-track" aria-hidden="true"><div class="progress-fill" data-progress-fill></div></div>
+          <span data-progress-text>0 / 5 레슨 완료</span>
+          <button class="link-btn" type="button" data-progress-reset>초기화</button>
+        </div>
+        <ol class="roadmap">
+          <li data-lesson-item="01">
+            <a href="lessons/01-why-ai.html">
+              <span class="roadmap-num">01</span>
+              <span><span class="roadmap-title">왜 지금 AI인가</span>
+              <span class="roadmap-desc">자동완성과 무엇이 다른지, 시니어의 경험이 왜 오히려 강점인지</span></span>
+              <span class="roadmap-meta" data-default="5분 · 읽기">5분 · 읽기</span>
+            </a>
+          </li>
+          <li data-lesson-item="02">
+            <a href="lessons/02-setup.html">
+              <span class="roadmap-num">02</span>
+              <span><span class="roadmap-title">설치와 첫 실행</span>
+              <span class="roadmap-desc">명령 한 줄로 설치하고, 로그인하고, 첫 대화를 엽니다</span></span>
+              <span class="roadmap-meta" data-default="10분 · 실습">10분 · 실습</span>
+            </a>
+          </li>
+          <li data-lesson-item="03">
+            <a href="lessons/03-first-10min.html">
+              <span class="roadmap-num">03</span>
+              <span><span class="roadmap-title">첫 10분 체험</span>
+              <span class="roadmap-desc">내 프로젝트 코드로 미션 3개: 설명받기 · 버그 찾기 · 주석 달기</span></span>
+              <span class="roadmap-meta" data-default="10분 · 실습">10분 · 실습</span>
+            </a>
+          </li>
+          <li data-lesson-item="04">
+            <a href="lessons/04-recipes.html">
+              <span class="roadmap-num">04</span>
+              <span><span class="roadmap-title">Java / Spring 실무 레시피</span>
+              <span class="roadmap-desc">레거시 분석, MyBatis 쿼리, JUnit 테스트, 리팩터링, PR 설명</span></span>
+              <span class="roadmap-meta" data-default="15분 · 참고">15분 · 참고</span>
+            </a>
+          </li>
+          <li data-lesson-item="05">
+            <a href="lessons/05-habits.html">
+              <span class="roadmap-num">05</span>
+              <span><span class="roadmap-title">잘 쓰는 습관</span>
+              <span class="roadmap-desc">좋은 요청법, CLAUDE.md, Plan 모드, 그리고 1주 챌린지</span></span>
+              <span class="roadmap-meta" data-default="10분 · 읽기">10분 · 읽기</span>
+            </a>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2 style="margin-top:0">오늘 10분만 투자해 보세요</h2>
+      <p>완벽하게 이해하고 시작할 필요는 없습니다. 일단 한 번 물어보는 순간 감이 옵니다.</p>
+      <a class="btn btn-primary" href="lessons/01-why-ai.html">레슨 01 시작 →</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>Claude Code 첫걸음 — 사내 개발자 교육 자료 (Anthropic 공식 사이트가 아닙니다)</span>
+      <span>최신 정보는 <a href="https://code.claude.com/docs" target="_blank" rel="noopener">공식 문서</a>를 확인하세요</span>
+    </div>
+  </footer>
+
+  <script src="assets/js/progress.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

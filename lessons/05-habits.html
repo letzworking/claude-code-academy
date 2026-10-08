@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>05 잘 쓰는 습관 · Claude Code 첫걸음</title>
+  <meta name="description" content="좋은 요청법, CLAUDE.md, Plan 모드, 결과 검증, 그리고 1주 실천 챌린지.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="../index.html"><span class="brand-mark">&gt;_</span>Claude Code 첫걸음</a>
+      <nav class="site-nav" id="site-nav" aria-label="주요 메뉴">
+        <ul>
+          <li><a href="01-why-ai.html">01 왜 AI?</a></li>
+          <li><a href="02-setup.html">02 설치</a></li>
+          <li><a href="03-first-10min.html">03 첫 10분</a></li>
+          <li><a href="04-recipes.html">04 실무 레시피</a></li>
+          <li><a href="05-habits.html" aria-current="page">05 좋은 습관</a></li>
+          <li><a href="../cheatsheet.html">치트시트</a></li>
+        </ul>
+      </nav>
+      <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="메뉴 열기">☰</button>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="테마 전환">☾</button>
+    </div>
+  </header>
+
+  <main id="main" class="prose">
+    <div class="lesson-head">
+      <div class="breadcrumb"><a href="../index.html#roadmap">로드맵</a> / 레슨 05</div>
+      <h1>잘 쓰는 습관</h1>
+      <ul class="lesson-meta"><li>⏱ 10분</li><li>📖 읽기</li></ul>
+      <div class="goal-box">
+        <strong>이 레슨을 마치면</strong>
+        <ul>
+          <li>결과가 좋아지는 요청 방법 다섯 가지를 압니다.</li>
+          <li>팀 규칙을 한 번만 알려주면 계속 지키게 하는 방법(CLAUDE.md)을 압니다.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>습관 1 · 신입에게 일을 맡기듯 요청하기</h2>
+    <p>좋은 요청은 우리가 신입 개발자에게 업무를 줄 때와 똑같습니다. <strong>배경, 대상, 완료 조건</strong>을 알려주세요.</p>
+    <div class="versus">
+      <div class="bad"><strong>😕 막연한 요청</strong><p>"로그인 고쳐줘"</p></div>
+      <div class="good"><strong>🙂 구체적인 요청</strong><p>"비밀번호 5회 오류 시 계정이 잠겨야 하는데 안 잠겨. LoginService를 확인해서 원인을 찾고, 재현 테스트를 만든 다음 고쳐줘."</p></div>
+    </div>
+    <div class="versus">
+      <div class="bad"><strong>😕 범위가 열린 요청</strong><p>"코드 좀 개선해줘"</p></div>
+      <div class="good"><strong>🙂 범위가 정해진 요청</strong><p>"ProductService의 중복된 가격 계산 로직만 하나로 합쳐줘. 다른 클래스는 건드리지 말고."</p></div>
+    </div>
+
+    <h2>습관 2 · 큰 작업은 계획부터 (Plan 모드)</h2>
+    <p>
+      여러 파일을 고치는 작업이라면 바로 시키지 말고 <kbd>Shift</kbd>+<kbd>Tab</kbd>으로 <strong>Plan 모드</strong>로 바꾸세요.
+      Claude는 코드를 고치지 않고 조사한 뒤 계획만 보여줍니다. 계획을 검토하고 고칠 점을 말한 다음 승인하면 실행이 시작됩니다.
+    </p>
+    <div class="callout tip">
+      <span class="callout-icon" aria-hidden="true">💡</span>
+      <div class="callout-body"><p>설계 리뷰를 해본 경험이 바로 여기서 빛납니다. 계획 단계에서 잡은 문제 하나가 나중의 수정 열 개를 줄여줍니다.</p></div>
+    </div>
+
+    <h2>습관 3 · 팀 규칙은 CLAUDE.md에 한 번만</h2>
+    <p>
+      매번 "우리는 Lombok 써", "테스트는 Gradle로 돌려"라고 말하기 번거롭죠. 프로젝트 루트에 <code>CLAUDE.md</code> 파일을 두면
+      Claude가 <strong>세션을 시작할 때마다 자동으로 읽습니다</strong>. <code>/init</code>을 입력하면 프로젝트를 분석해 초안을 만들어 줍니다.
+    </p>
+    <div class="code"><span class="code-label">CLAUDE.md 예시</span><pre><code># 주문 서비스
+
+## 빌드·테스트
+- 빌드: ./gradlew build
+- 테스트: ./gradlew test
+
+## 코딩 규칙
+- Java 17, Spring Boot 3, MyBatis
+- DTO는 record 사용, 엔티티에는 Lombok @Getter만 허용
+- 테스트는 JUnit 5 + Mockito, @DisplayName은 한국어로
+
+## 주의
+- order_hist 테이블은 새벽 배치가 사용하므로 스키마 변경 금지
+- application-prod.yml은 절대 수정하지 말 것</code></pre></div>
+    <p class="muted">팀 저장소에 커밋해 두면 팀원 모두가 같은 규칙으로 Claude를 쓰게 됩니다. 나만 쓰는 설정은 <code>CLAUDE.local.md</code>에 두면 됩니다.</p>
+
+    <h2>습관 4 · 결과는 반드시 확인하기</h2>
+    <ul>
+      <li><strong>테스트로 검증</strong> — "테스트 돌려서 통과시켜줘"를 요청 끝에 붙이는 습관</li>
+      <li><strong>diff 직접 읽기</strong> — 커밋 전에 <code>git diff</code>나 IDE diff로 한 번은 눈으로 확인</li>
+      <li><strong>왜 그렇게 했는지 묻기</strong> — "이 부분은 왜 이렇게 바꿨어?"라고 물으면 근거를 설명합니다</li>
+    </ul>
+
+    <h2>습관 5 · 대화가 길어지면 새로 시작</h2>
+    <p>
+      한 대화에서 여러 주제를 오가면 앞의 내용이 뒤섞여 답의 질이 떨어질 수 있습니다.
+      주제가 바뀌면 <code>/clear</code>로 새로 시작하세요. 이어서 해야 하는데 대화가 너무 길면 <code>/compact</code>로 요약해 정리할 수 있습니다.
+    </p>
+
+    <h2>이것만은 하지 마세요</h2>
+    <div class="callout warn">
+      <span class="callout-icon" aria-hidden="true">🚫</span>
+      <div class="callout-body">
+        <ul style="margin:0;padding-left:1.2em">
+          <li>비밀번호·API 키·운영 DB 접속 정보를 프롬프트에 붙여넣기</li>
+          <li>고객 개인정보가 담긴 로그·데이터를 그대로 붙여넣기</li>
+          <li>운영 서버나 운영 DB에 직접 연결된 환경에서 무작정 실행하기</li>
+          <li>내용을 읽지 않고 모든 승인 요청에 "허용" 누르기</li>
+          <li>이해하지 못한 코드를 그대로 커밋하기</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>1주 실천 챌린지</h2>
+    <p>하루 10분, 실제 업무 하나에만 써보세요. 일주일이면 자연스럽게 손에 익습니다.</p>
+    <ul class="checklist">
+      <li><label><input type="checkbox"> <span><strong>월</strong> — 오늘 볼 코드 하나를 Claude에게 먼저 설명받기</span></label></li>
+      <li><label><input type="checkbox"> <span><strong>화</strong> — 테스트 없는 클래스 하나에 테스트 만들기 (레시피 3)</span></label></li>
+      <li><label><input type="checkbox"> <span><strong>수</strong> — 복잡한 MyBatis 쿼리 하나 해석받기 (레시피 2)</span></label></li>
+      <li><label><input type="checkbox"> <span><strong>목</strong> — <code>/init</code>으로 CLAUDE.md 만들고 팀 규칙 3줄 추가하기</span></label></li>
+      <li><label><input type="checkbox"> <span><strong>금</strong> — 이번 주 작업 PR 설명을 Claude와 함께 쓰기 (레시피 6)</span></label></li>
+    </ul>
+
+    <div class="callout">
+      <span class="callout-icon" aria-hidden="true">🤝</span>
+      <div class="callout-body"><p><strong>마지막 팁</strong> — 써보고 좋았던 프롬프트는 팀 채널에 공유하세요. 팀의 레시피가 쌓이면 모두가 함께 빨라집니다.</p></div>
+    </div>
+
+    <div class="complete-box">
+      <p>모든 레슨을 마치셨습니다! 치트시트를 출력해 모니터 옆에 붙여 두세요.</p>
+      <button class="btn btn-primary complete-btn" type="button" data-complete="05" aria-pressed="false">이 레슨을 완료했어요</button>
+    </div>
+    <nav class="pager" aria-label="레슨 이동">
+      <a class="prev" href="04-recipes.html"><small>← 이전 레슨</small>04 Java/Spring 실무 레시피</a>
+      <a class="next" href="../cheatsheet.html"><small>마무리 →</small>치트시트</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>Claude Code 첫걸음 — 사내 개발자 교육 자료 (Anthropic 공식 사이트가 아닙니다)</span>
+      <span>최신 정보는 <a href="https://code.claude.com/docs" target="_blank" rel="noopener">공식 문서</a>를 확인하세요</span>
+    </div>
+  </footer>
+
+  <script src="../assets/js/progress.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
